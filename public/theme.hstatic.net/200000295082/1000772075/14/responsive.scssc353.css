@@ -1,0 +1,24 @@
+@media (max-width: 767px) {
+  .mini-cart > a {
+    display: block;
+    width: 24px;
+    margin-right: 5px;
+    position: relative; }
+  .mini-cart .count_item {
+    position: absolute;
+    right: -12px;
+    top: 0px;
+    font-size: 10px; } }
+
+@media (max-width: 767px) {
+  .item_product_main {
+    padding: 0px; } }
+
+li.ega-menu__item.ega-loadmore-btn {
+  display: var(--show-loadmore); }
+
+li.ega-menu__item.ega-loadmore-btn + li.ega-menu__item {
+  order: var(--order-loadmore); }
+
+#crCartModal .crbtn-modal__right b {
+  color: var(--price-color); }

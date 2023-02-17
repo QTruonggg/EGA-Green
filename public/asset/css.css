@@ -1,0 +1,22 @@
+:root {
+    --text-color: #3a445e;
+    --text-secondary-color: #666666;
+    --primary-color: #008848;
+    --secondary-color: #ffc107;
+    --price-color: #f3283d;
+    --topbar-bg: #fdd835;
+    --topbar-color: #000000;
+    --header-background: #fff;
+    --header-color: var(--text-color);
+    --label-background: #e2544a;
+    --label-color: #ffffff;
+    --main-menu-bg: #008848;
+    --main-menu-color: #ffffff;
+    --footer-bg: #0a472e;
+    --footer-color: #ffffff;
+    --show-loadmore: none !important;
+    --order-loadmore: -1 !important;
+}
+.grecaptcha-badge {
+    visibility: hidden;
+}

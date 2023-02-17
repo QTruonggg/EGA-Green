@@ -1,0 +1,181 @@
+.popcart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; }
+
+.product-summary img, .product-summary video, .product-summary iframe {
+  display: none; }
+
+.product-summary p {
+  margin-bottom: 5px; }
+
+#popupCartModal .modal-content {
+  padding: 15px; }
+
+#popupCartModal .fa.fa-check {
+  color: var(--success); }
+
+#popupCartModal .media-left.thumb_img {
+  margin-right: 1.25rem; }
+
+#popupCartModal button.close {
+  position: absolute;
+  right: 10px;
+  top: 4px; }
+
+#popupCartModal h4.title.right_title,
+#popupCartModal .modal-title {
+  font-size: 1rem; }
+  #popupCartModal h4.title.right_title a:hover,
+  #popupCartModal .modal-title a:hover {
+    color: var(--primary-color); }
+
+#popupCartModal .checkout_button {
+  background: #ff5722;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600; }
+  #popupCartModal .checkout_button:hover {
+    filter: brightness(1.2); }
+
+#popupCartModal .media-body.body_content {
+  font-size: 14px; }
+  #popupCartModal .media-body.body_content .product-new-price {
+    font-weight: 500; }
+
+#popupCartModal .thumb_img {
+  margin-right: 10px;
+  position: relative;
+  border-radius: 0px;
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+  min-width: 100px;
+  min-height: 100px;
+  width: 100px; }
+
+@media (min-width: 601px) {
+  #popupCartModal .modal-dialog {
+    transform: translate(-50%, -50%) !important; }
+  #popupCartModal .modal-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 500px; } }
+
+@media (max-width: 600px) {
+  #popupCartModal {
+    z-index: 99999; }
+    #popupCartModal .modal-dialog {
+      position: absolute;
+      bottom: 0;
+      margin: 0;
+      width: 100%; }
+    #popupCartModal .title.right_title {
+      display: none; } }
+
+/** Product infor **/
+.selector-wrapper {
+  display: none; }
+
+.large-image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%; }
+
+#thumblist_quickview {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  padding: 0px;
+  /**.item.slick-slide.slick-current.slick-active{
+	border-color: var(--primary-color);
+}**/ }
+  #thumblist_quickview:not(.slick-slider) {
+    display: flex;
+    align-items: center;
+    overflow: hidden; }
+  #thumblist_quickview .slick-slide.slick-slide {
+    margin: 0 5px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #eee; }
+  #thumblist_quickview .slick-slide.active {
+    border-color: var(--primary-color); }
+  #thumblist_quickview .slick-slide {
+    position: relative;
+    height: 80px; }
+    #thumblist_quickview .slick-slide img {
+      width: auto;
+      max-height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      padding: 2px; }
+
+a.quickview-close.close-window {
+  position: absolute;
+  top: 0;
+  right: -55px;
+  background: #fff;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 100%;
+  color: #000;
+  justify-content: center;
+  opacity: 0.7; }
+  a.quickview-close.close-window:hover {
+    opacity: 1; }
+
+#quick-view-product .quick-view-product {
+  border-radius: 8px;
+  padding: 15px; }
+
+.head-qv.group-status a:hover {
+  color: var(--primary-color); }
+
+#popupCartModal {
+  padding-right: 0px !important; }
+  @media (min-width: 601px) {
+    #popupCartModal .modal-dialog {
+      width: 420px; } }
+  #popupCartModal .modal-left {
+    display: flex;
+    flex-direction: column; }
+  #popupCartModal .modal-title {
+    padding: 10px;
+    background: #EFF8F0;
+    margin: -15px -15px 0;
+    color: #2EB346;
+    border-radius: 5px 5px 0 0; }
+    #popupCartModal .modal-title svg > * {
+      stroke: #2EB346; }
+  #popupCartModal .media {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; }
+  #popupCartModal .thumb_img {
+    min-width: 90px;
+    min-height: 90px;
+    width: 90px;
+    margin-bottom: 1.25rem;
+    margin-top: 1.25rem;
+    margin-right: 0; }

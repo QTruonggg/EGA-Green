@@ -1,0 +1,197 @@
+.header_sticky {
+	position: fixed;
+	transform: translateY(-100px);
+	top: 0px !important;
+	width: 100%;
+	z-index: -1;
+	transition: all 0.3s ease-out;
+	box-shadow: 0 0px 5px 1px rgba(0, 0, 0, .4);
+	opacity: 0;
+	background: #fff;
+}
+.header_sticky.active {
+	z-index: 1000;
+	transform: translateY(0);
+	opacity: 1;
+}
+.header_sticky .mid-header {
+	font-size: 14px;
+	padding: 0px;
+}
+.header_sticky .mid-header:after {
+	content: none !important;
+}
+.header_sticky .toogle-nav-wrapper {
+	margin: -5px 0px;
+}
+.header_sticky .toogle-nav-wrapper:hover ~ .sticky-overlay {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+	background: rgba(0, 0, 0, .3);
+	left: 0;
+	top: 0;
+}
+.header_sticky .toogle-nav-wrapper .navigation-wrapper {
+	margin-top: 0;
+}
+.header_sticky .navigation {
+	--nav-height: 75vh;
+}
+.header_sticky #search-header {
+	order: 0 !important;
+	margin: 0 !important;
+}
+.header_sticky .navigation {
+	--nav-height: 313px;
+	border: 1px solid #e1e1e1;
+	background: #fff;
+	min-height: 100%;
+	overflow-y: auto;
+		display: block
+
+}
+@media (min-width: 992px) {
+	.header_sticky .navigation {
+		max-height: var(--nav-height);
+		border-radius: 0 0 5px 5px;
+	}
+}
+.header_sticky .navigation .list-group-item {
+	padding: 8px 15px;
+	cursor: pointer;
+	border-bottom: 0px;
+}
+.header_sticky .navigation .list-group-item:hover {
+	background: var(--light);
+}
+.header_sticky .navigation .list-group-item:hover > a {
+	color: var(--primary-color);
+}
+.header_sticky .navigation .list-group-item > a {
+	text-decoration: none;
+}
+.header_sticky .navigation .list-group-item > a > img {
+	width: 24px;
+	height: 24px;
+	object-fit: contain;
+	margin-right: 4px;
+}
+.header_sticky .navigation .list-group-item .menu-item__link {
+	font-size: 15px;
+}
+@media (min-width: 1200px) {
+	.header_sticky .navigation .list-group-item .menu-item__link {
+		display: flex;
+		align-items: center;
+		justify-content: space-between
+	}
+	.header_sticky .navigation .list-group-item .menu-item__link img{
+		width: 24px;
+		max-height: 24px;
+
+	}
+	.header_sticky .navigation .list-group-item .menu-item__link span {
+		grid-column: 2;
+	}
+}
+.header_sticky .navigation .menu-item {
+	position: initial;
+}
+@media (min-width: 1024px) {
+	.header_sticky .navigation .menu-item:hover .submenu {
+		display: block;
+		z-index: 900;
+	}
+}
+.header_sticky .navigation .submenu {
+	display: none;
+	width: calc(300% + 15px);
+	height: 100%;
+	padding: 14px 20px;
+	border-radius: 0px;
+	border-width: 1px 1px 1px 0px;
+	border-style: solid;
+	border-color: #ddd #ddd #ddd #e1e1e1;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: calc(100% - 15px);
+	background: #fff;
+	margin-left: 0px;
+	box-shadow: rgba(0, 0, 0, 0.06) -2px 0px 8px 0px;
+	z-index: 1;
+	overflow: auto;
+	font-size: 14px;
+}
+.header_sticky .navigation .submenu__list {
+	--col-menu: 4;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(calc(100% / var(--col-menu)), 1fr));
+	grid-gap: 10px 5px;
+	padding: 0px;
+	list-style: none;
+}
+.header_sticky .navigation .submenu__col {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	font-size: 14px;
+}
+.header_sticky .navigation .submenu__item--main {
+	font-weight: bold;
+}
+.header_sticky .toogle-nav-wrapper {
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
+.header_sticky .toogle-nav-wrapper .navigation-wrapper {
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+	z-index: -1;
+	width: 100%;
+	margin-top: 0;
+}
+.header_sticky .toogle-nav-wrapper.visible .navigation-wrapper, .header_sticky .toogle-nav-wrapper:hover .navigation-wrapper {
+	opacity: 1;
+	visibility: visible;
+	z-index: 90;
+}
+.header_sticky .toogle-nav-wrapper .navigation .submenu {
+	left: calc(100% - 6px) !important;
+	top: 0px !important;
+	height: calc(100% + 2px);
+}
+.header_sticky .fas{
+	font-size: 18px;
+	transform: rotate(0deg)
+}
+.toogle-nav-wrapper{
+	padding: 10px 0 20px;
+	border-radius: 5px 5px 0px 0px;
+	border: 1px;
+	color: var(--subheader-background);
+	background: var(--subheader-color);	
+	font-weight: 500;
+}
+.toogle-nav-wrapper .icon-bar {
+	width: 20px;
+	height: 18px;
+	margin-right: 15px!important;
+}
+.header_sticky .navigation .list-group-item i{
+	transition: transform .3s ease-out
+}
+/*.header_sticky .navigation .list-group-item:hover i{
+	transform: rotate(0deg);
+}*/
+.header_sticky .navigation .list-group-item>a{
+    white-space: initial;
+    background: initial;
+    color: initial;
+    padding: 0;
+    position: relative;
+}
