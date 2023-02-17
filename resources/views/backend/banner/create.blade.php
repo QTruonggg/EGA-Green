@@ -66,6 +66,9 @@
                                         @enderror
                                     </div>
                                     <input type="hidden" name="image"  value="">
+                                    <input type="hidden" name="image"  value="">
+                                    <input type="hidden" name="image"  value="">
+
                                         
                                 </div>
                             </div>

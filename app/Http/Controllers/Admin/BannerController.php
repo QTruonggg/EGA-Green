@@ -36,6 +36,15 @@ class BannerController extends Controller
             'sort.required' => 'Nhập số thứ tự (là số nguyên dương) !!!',
             'image.required'  => 'Nhập ảnh !!!'
         ];
+
+        $arr[] = [
+            'image_1'=>$request->images_1,
+            'image_2'=>$request->images_2,
+            'image_3'=>$request->images_3,
+        ];
+        $ads =  JSON_encode($arr);
+        dd(JSON_decode($ads));
+        
         $validate = $request->validate($requi, $messages);
         $data = $request->all();
         Banner::create($data);

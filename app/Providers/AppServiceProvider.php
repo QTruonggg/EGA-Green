@@ -6,8 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\User;
 use App\Models\Banner;
 use App\Models\Category;
-use App\Models\Category_products;
-use App\Models\Subcategory_products;
+use App\Models\CategoryProducts;
+use App\Models\SubCategoryProducts;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function($view) {
             $view->with([
-                'category_products'=>Category_products::all(),
-                'subcategory'=>Subcategory_products::all(),
+                'category_products'=>CategoryProducts::orderBy('created_at','ASC')->where('parent_id', '=', '0')->with('childs')->get(),
+                'subcategory'=>SubCategoryProducts::all(),
                 'category'=>Category::all(),
                 'banner'=>Banner::all(),
                 // 'product_cart'=>Cart::content(),

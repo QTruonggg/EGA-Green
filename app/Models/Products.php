@@ -10,15 +10,13 @@ class Products extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'product_code',
-        'thumbnail_1',
-        'thumbnail_2',
-        'thumbnail_3',
-        'thumbnail_4',
-        'category_product_id',
-        'old_price',
+        'code',
+        'images',
+        'qty',
+        'category_id',
+        'oldPrice',
         'percent_discount',
-        'current_price',
+        'salePrice',
         'description',
         'status',
         'seo_keyword',  
@@ -26,6 +24,6 @@ class Products extends Model
         'seo_title',
     ];
     public function parent(){
-       return $this->belongsTo(Subcategory_products::class);
+       return $this->belongsTo(SubCategoryProducts::class);
     }
 }

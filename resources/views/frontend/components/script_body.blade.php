@@ -1,46 +1,29 @@
 <script type="text/x-custom-template" data-template="navigation">
     <nav>
     <ul  class="navigation list-group list-group-flush scroll">
-
-
-
                 <li class="menu-item list-group-item">
             <a href="/" class="menu-item__link" title="TRANG CHỦ">
             <span>			TRANG CHỦ</span>
                 </a>
-
                         </li>
-
-
-
                 <li class="menu-item list-group-item">
             <a href="/collections/all" class="menu-item__link" title="SẢN PHẨM">
             <span>			SẢN PHẨM</span>
                 <i class='fas fa-chevron-right float-right' data-toggle-submenu></i>
                 </a>
-
-
-
-
-
                                             <div class="submenu scroll  mega-menu ">
                             <ul class="submenu__list">
-
-
-
-
-                @foreach($category_products as $category_products)
+                @foreach($category_products as $category_product)
                 <li class="submenu__col">
                     <span class="submenu__item submenu__item--main">
-                        <a class="link" href="/" title="{{$category_products->name}}">{{$category_products->name}}</a>
+                        <a class="link" href="/" title="{{$category_product->name}}">{{$category_product->name}}</a>
                     </span>
                     
-
-                    {{-- @foreach($subcategory as $subcategory)
+                    @foreach($category_product->childs as $subcategory)
                         <span class="submenu__item submenu__item">
                             <a class="link" href="/" title="{{$subcategory->name}}">{{$subcategory->name}}</a>
                         </span>
-                    @endforeach --}}
+                    @endforeach
 
 
                 </li>

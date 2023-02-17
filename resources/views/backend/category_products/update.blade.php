@@ -57,9 +57,9 @@
                                         <label for="parent_id" class="form-label mb-1">Danh mục</label>
                                         <select class="form-control custom-select" name="parent_id" id="parent_id" placeholder="">
                                             <option value="0">Danh mục lớn</option>
-                                            {{-- @foreach($category_parent as $category_parent)
-                                            <option value="{{$category_parent->id}}">{{$category_parent->name}}</option>
-                                            @endforeach --}}
+                                            @foreach($category_id as $parent_category)
+                                            <option value="{{$parent_category->id}}">{{$parent_category->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3"></div>
