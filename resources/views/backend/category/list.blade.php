@@ -46,10 +46,10 @@
                                     <th style="width: 1%; text-align: center;">
                                         Id
                                     </th>
-                                    <th style="width: 15%">
+                                    <th style="width: 15%; text-align: center;">
                                         Ảnh
                                     </th>
-                                    <th style="width: 5%">
+                                    <th style="width: 10%">
                                         Tên
                                     </th>
                                     <th style="width: 10%">
@@ -65,7 +65,7 @@
                                 @foreach($category as $category)
                                 <tr>
                                     <th style="text-align: center;">{{ $category->id }}</th>
-                                    <th><img src="{{$category->image}}" alt="" style="width:120px; height: 100px; border-radius: 50%; object-fit: cover;"></th>
+                                    <th style="text-align: center;"><img src="{{$category->image}}" alt="" style="width:120px; height: 120px; border-radius: 50%; object-fit: cover;"></th>
                                     <th>{{ $category->name }}</th>
                                     <th>
                                         {{$category->created_at}}
