@@ -32,14 +32,13 @@
             <div class="card-header">
             </div>
             <div class="card-body p-0">
-                <form id="cerfitication" action="create" method="POST" enctype="multipart/form-data">
+                <form id="cerfitication" action="{{route('admin.addProduct')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title">Thông tin</h3>
-
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                                             <i class="fas fa-minus"></i></button>
@@ -60,20 +59,28 @@
                                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                     <div class="form-group mt-1 mb-1">
+                                    <div class="form-group mt-1 mb-1">
+                                        <label for="qty" class="form-label mb-1">Số lượng</label>
+                                        <input type="text" id="qty" name="qty" value="" class="form-control" placeholder="Nhập số lượng">
+                                         @error('qty')
+                                        <span class="text-danger mt-1 d-block">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mt-1 mb-1">
                                         <label for="category_id" class="form-label mb-1">Danh mục</label>
                                         <select class="form-control custom-select" name="category_id" id="category_id" placeholder="">
-                                            @foreach($category_id as $parent_category)
-                                            <option value="{{$parent_category->id}}">{{$parent_category->name}}</option>
+                                            @foreach ($categorys_id as $item)
+                                                <option value="{{$item->name}}" style="font-weight: bold; font-size: 1.1rem" disabled>{{$item->name}}</option>
+                                                    @foreach($item->childs as $parent_category)
+                                                    <option value="{{$parent_category->id}}">{{$parent_category->name}}</option>
+                                                    @endforeach
                                             @endforeach
                                         </select>
                                     </div>
-
-
                                     <div class="form-group mt-1 mb-1">
-                                        <label for="old_price" class="form-label mb-1">Giá gốc</label>
-                                        <input type="number" id="old_price" name="old_price" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" value="" class="form-control" placeholder="Nhập giá gốc">
-                                         @error('old_price')
+                                        <label for="oldPrice" class="form-label mb-1">Giá gốc</label>
+                                        <input type="number" id="oldPrice" name="oldPrice" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" value="" class="form-control" placeholder="Nhập giá gốc">
+                                         @error('oldPrice')
                                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -138,7 +145,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="images"  value="{{asset('empty/empty_img.png')}}">
+                                    <input type="hidden" name="images"  value="">
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -175,6 +182,9 @@
                 <button class="btn btn-primary btn-toggle-sidebar w-100 waves-effect waves-float waves-light" id="popup-1-button">
                     <span class="align-middle">Chọn ảnh</span>
                 </button>
+                @if ($errors->has('images'))
+                    <span class="text-danger d-block mt-1">{{ $errors->first('images') }}</span>
+                @endif
             </div>
         </div>
     </div>
@@ -204,15 +214,15 @@
         selectFileWithCKFinder( 'ckfinder-input-1' );
     }
     $('input[name="percent_discount"]').change(function() {
-        var value_old_price = parseInt($('input[name="old_price"]').val());
+        var value_oldPrice = parseInt($('input[name="oldPrice"]').val());
         var value_percent_discount =  parseInt($('input[name="percent_discount"]').val());
-        value_current_price = value_old_price * (100 - value_percent_discount) / 100;
-        $('input[name="current_price"]').val(value_current_price)
+        value_salePrice = value_oldPrice * (100 - value_percent_discount) / 100;
+        $('input[name="salePrice"]').val(value_salePrice)
     })
-     $('input[name="current_price"]').change(function() {
-        var value_old_price = parseInt($('input[name="old_price"]').val());
-        var value_current_price =  parseInt($('input[name="current_price"]').val());
-        var value_percent_discount = value_current_price * (100 / value_old_price);
+     $('input[name="salePrice"]').change(function() {
+        var value_oldPrice = parseInt($('input[name="oldPrice"]').val());
+        var value_salePrice =  parseInt($('input[name="salePrice"]').val());
+        var value_percent_discount = value_salePrice * (100 / value_oldPrice);
         var result = parseFloat( Math.round(100 - value_percent_discount))
         $('input[name="percent_discount"]').val(result)
      })

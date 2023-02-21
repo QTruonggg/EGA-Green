@@ -7,7 +7,7 @@
                 </a>
                         </li>
                 <li class="menu-item list-group-item">
-            <a href="/collections/all" class="menu-item__link" title="SẢN PHẨM">
+            <a href="/sanpham" class="menu-item__link" title="SẢN PHẨM">
             <span>			SẢN PHẨM</span>
                 <i class='fas fa-chevron-right float-right' data-toggle-submenu></i>
                 </a>

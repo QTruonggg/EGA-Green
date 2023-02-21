@@ -92,10 +92,9 @@
     <link href="../theme.hstatic.net/200000295082/1000772075/14/responsive.scssc353.css?v=586" rel="stylesheet"
         type="text/css" media="all" />
 
-
-
-    <link href="../theme.hstatic.net/200000295082/1000772075/14/responsive.scssc353.css?v=586" rel="stylesheet"
+    <link href="../../theme.hstatic.net/200000295082/1000772075/14/product_style.scssc353.css?v=586" rel="stylesheet"
         type="text/css" media="all" />
+
 
 
     <script type="application/ld+json">
@@ -146,6 +145,10 @@
 
     <script src="{{ asset('asset/js/script_head.js') }}"></script>
 
+
+
     <link rel="stylesheet" href="{{ asset('asset/css.css') }}">
 
+    <link href="../../theme.hstatic.net/200000295082/1000772075/14/responsive.scssc353.css?v=586" rel="stylesheet"
+        type="text/css" media="all" />
 </head>

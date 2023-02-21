@@ -21,8 +21,9 @@ return new class extends Migration
             $table->integer('qty');
             $table->string('category_id');
             $table->decimal('oldPrice');
+            $table->bigInteger('percent_discount');
             $table->decimal('salePrice');
-            $table->string('description');
+            $table->LONGTEXT('description');
             $table->string('status');
             $table->string('seo_keyword');
             $table->string('seo_description');

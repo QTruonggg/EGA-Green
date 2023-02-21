@@ -1,4 +1,4 @@
-<div class="subheader mb-4">
+<div class="subheader ">
     <div class="container px-md-0">
         <div class="navigation--horizontal d-md-flex align-items-center d-none">
             <div class="navigation-wrapper">
@@ -11,7 +11,7 @@
                         </li>
 
                         <li class="menu-item list-group-item">
-                            <a href="collections/all.html" class="menu-item__link" title="SẢN PHẨM">
+                            <a href="/sanpham" class="menu-item__link" title="SẢN PHẨM">
                                 SẢN PHẨM
                                 <i class="fas fa-chevron-right float-right" data-toggle-submenu></i>
                             </a>

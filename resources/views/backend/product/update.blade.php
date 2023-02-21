@@ -55,23 +55,33 @@
                                     </div>
                                     <div class="form-group mt-1 mb-1">
                                         <label for="inputName" class="form-label mb-1">Mã sản phẩm</label>
-                                        <input type="text" id="product_code" name="product_code" value="{{$product->product_code}}" class="form-control" placeholder="Nhập mã sản phẩm">
-                                         @error('product_code')
+                                        <input type="text" id="code" name="code" value="{{$product->code}}" class="form-control" placeholder="Nhập mã sản phẩm">
+                                         @error('code')
                                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                     <div class="form-group mt-1 mb-1">
-                                        <label for="category_id" class="form-label mb-1">Danh mục cha</label>
+                                    <div class="form-group mt-1 mb-1">
+                                        <label for="qty" class="form-label mb-1">Số lượng</label>
+                                        <input type="number" id="qty" name="qty" value="{{$product->qty}}" class="form-control" placeholder="Nhập mã sản phẩm">
+                                         @error('qty')
+                                        <span class="text-danger mt-1 d-block">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mt-1 mb-1">
+                                        <label for="category_id" class="form-label mb-1">Danh mục</label>
                                         <select class="form-control custom-select" name="category_id" id="category_id" placeholder="">
-                                            @foreach($category_id as $parent_category)
-                                            <option value="{{$parent_category->id}}">{{$parent_category->name}}</option>
+                                            @foreach ($categorys_id as $item)
+                                                <option value="{{$item->name}}" style="font-weight: bold; font-size: 1.1rem" disabled>{{$item->name}}</option>
+                                                    @foreach($item->childs as $parent_category)
+                                                    <option value="{{$parent_category->name}}">{{$parent_category->name}}</option>
+                                                    @endforeach
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group mt-1 mb-1">
-                                        <label for="old_price" class="form-label mb-1">Giá gốc</label>
-                                        <input type="number" id="old_price" name="old_price" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" value="{{$product->old_price}}" class="form-control" placeholder="Nhập giá gốc">
-                                         @error('old_price')
+                                        <label for="oldPrice" class="form-label mb-1">Giá gốc</label>
+                                        <input type="number" id="oldPrice" name="oldPrice" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" value="{{$product->oldPrice}}" class="form-control" placeholder="Nhập giá gốc">
+                                         @error('oldPrice')
                                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -83,9 +93,9 @@
                                         @enderror
                                     </div>
                                     <div class="form-group mt-1 mb-1">
-                                        <label for="current_price" class="form-label mb-1">Giá hiện tại</label>
-                                        <input type="text" id="current_price" name="current_price" value="{{$product->current_price}}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '')" class="form-control" placeholder="Bạn cũng có thể nhập giá hiện tại tại đây!">
-                                         @error('current_price')
+                                        <label for="salePrice" class="form-label mb-1">Giá hiện tại</label>
+                                        <input type="text" id="salePrice" name="salePrice" value="{{$product->salePrice}}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '')" class="form-control" placeholder="Bạn cũng có thể nhập giá hiện tại tại đây!">
+                                         @error('salePrice')
                                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -136,7 +146,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="thumbnail"  value="{{$product->thumbnail}}">
+                                    <input type="hidden" name="images"  value="{{$product->images}}">
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -168,7 +178,7 @@
                         margin: 0 auto;
                         margin-bottom: 20px;
                     ">
-                    <img style="width:100%; height:100%; border-radius:50%; object-fit:cover;" id="thumbnail_prev" src="{{$product->thumbnail}}"  alt="..">
+                    <img style="width:100%; height:100%; border-radius:50%; object-fit:cover;" id="images_prev" src="{{$product->images}}"  alt="..">
                 </div>
                 <button class="btn btn-primary btn-toggle-sidebar w-100 waves-effect waves-float waves-light" id="popup-1-button">
                     <span class="align-middle">Chọn ảnh</span>
@@ -190,10 +200,10 @@
             onInit: function( finder ) {
                 finder.on( 'files:choose', function( evt ) {
                     var file = evt.data.files.first();
-                    var img = document.getElementById('thumbnail_prev')
-                    var thumbnail = file.getUrl();
-                    $('input[name="thumbnail"]').val(`{{env('APP_URL')}}${thumbnail}`);
-                    img.src = `{{env('APP_URL')}}${thumbnail}`;    
+                    var img = document.getElementById('images_prev')
+                    var images = file.getUrl();
+                    $('input[name="images"]').val(`{{env('APP_URL')}}${images}`);
+                    img.src = `{{env('APP_URL')}}${images}`;    
                 } );
             }
         } );
@@ -202,15 +212,15 @@
         selectFileWithCKFinder( 'ckfinder-input-1' );
     }
     $('input[name="percent_discount"]').change(function() {
-        var value_old_price = parseInt($('input[name="old_price"]').val());
+        var value_oldPrice = parseInt($('input[name="oldPrice"]').val());
         var value_percent_discount =  parseInt($('input[name="percent_discount"]').val());
-        value_current_price = value_old_price * (100 - value_percent_discount) / 100;
-        $('input[name="current_price"]').val(value_current_price)
+        value_salePrice = value_oldPrice * (100 - value_percent_discount) / 100;
+        $('input[name="salePrice"]').val(value_salePrice)
     })
-     $('input[name="current_price"]').change(function() {
-        var value_old_price = parseInt($('input[name="old_price"]').val());
-        var value_current_price =  parseInt($('input[name="current_price"]').val());
-        var value_percent_discount = value_current_price * (100 / value_old_price);
+     $('input[name="salePrice"]').change(function() {
+        var value_oldPrice = parseInt($('input[name="oldPrice"]').val());
+        var value_salePrice =  parseInt($('input[name="salePrice"]').val());
+        var value_percent_discount = value_salePrice * (100 / value_oldPrice);
         var result = parseFloat( Math.round(100 - value_percent_discount))
         $('input[name="percent_discount"]').val(result)
      })

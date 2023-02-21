@@ -11,6 +11,7 @@
 
     @include('frontend.components.script_body')
 
+    @yield('scripts')
 </body>
 
 </html>

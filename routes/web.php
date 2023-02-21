@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\Category_productsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\Subcategory_productsController;
+use App\Http\Controllers\frontend\HomeInterfaceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,9 +78,21 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('search', [Subcategory_productsController::class,'search'])->name('admin.subcategory.search');
     });
 
-
-
+    Route::prefix('products')->group(function() {
+        Route::get('list', [ProductsController::class,'showProductList'])->name('admin.showProductList');
+        Route::get('create', [ProductsController::class,'getCreateProduct'])->name('admin.getCreateProduct');
+        Route::post('create', [ProductsController::class,'addProduct'])->name('admin.addProduct');
+        Route::get('list/update/{id}', [ProductsController::class,'getUpdateProduct'])->name('admin.getUpdateProduct');
+        Route::post('list/update/{id}', [ProductsController::class,'updateProduct'])->name('admin.updateProduct');
+        Route::get('list/delete/{id}', [ProductsController::class,'deleteProduct'])->name('admin.deleteProduct');
+        Route::get('search', [ProductsController::class,'search'])->name('admin.product.search');
+    });
 
 
 
 });
+
+Route::get('/sanpham',[HomeInterfaceController::class, 'showAllProduct'])->name('ProductList'); 
+
+
+Route::get('/sanpham/{id}-{slug}',[HomeInterfaceController::class, 'showDetailsProduct'])->name('showDetailsProduct'); 

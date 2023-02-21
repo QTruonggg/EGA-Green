@@ -46,6 +46,17 @@
             $('.txt').addClass('d-none')
         },2000)
     </script>
+
+    @if(session()->has('success'))
+    <div class="txt pb-2 pt-2 ps-2 alert alert-success h3">
+    {{ session()->get('success') }}
+    </div>
+    @endif
+    <script>
+    setTimeout(()=> {
+        $('.txt').addClass('d-none')
+    },2000)
+    </script>
 <div class="card">
     <div class="card-header">
         <div class="btn-group">
@@ -89,21 +100,24 @@
                             Ảnh
                         </th>
                         <th style=" font-size:10px;width: 15%">
-                            tên
-                        </th>
-                        <th style=" font-size:10px;width: 15%">
-                            Mã sản phẩm
+                            Tên
                         </th>
                         <th style=" font-size:10px;width: 10%">
+                            Mã sản phẩm
+                        </th>
+                        <th style=" font-size:10px;width: 5%">
+                            Số lượng
+                        </th>
+                        <th style=" font-size:10px;width: 5%">
                             Giá gốc
                         </th>
-                        <th style=" font-size:10px;width: 11%">
+                        <th style=" font-size:10px;width: 5%">
                             Giá hiện tại
                         </th>
-                        <th style=" font-size:10px;width: 14%">
-                            tình trạng
+                        <th style=" font-size:10px;width: 15%">
+                            Tình trạng
                         </th>
-                        <th style=" font-size:10px; width: 11%" class="text-right">
+                        <th style=" font-size:10px; width: 14%" class="text-right">
                             Tác vụ
                         </th>
                     </tr>
@@ -117,8 +131,8 @@
                             </a>
                         </td>
                         <td >
-                            <div style="height:70px; overflow:hidden; display:flex; justify-content: center">
-                                <img style="width:85%; object-fit:cover;" src="{{$item->thumbnail ? $item->thumbnail : asset('upload_thumbnail/empty_img.png')}}" alt="">
+                            <div style="height:85px; overflow:hidden; display:flex; justify-content: center">
+                                <img style="width:85%; object-fit:cover;" src="{{$item->images ? $item->images : asset('upload_thumbnail/empty_img.png')}}" alt="">
                             </div>
                         </td>
                         <td> 
@@ -128,17 +142,22 @@
                         </td>
                         <td> 
                             <a style="word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
-                                {{$item->product_code}}
+                                {{$item->code}}
                             </a>
                         </td>
                         <td> 
                             <a style="word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
-                                {{$item->old_price}}
+                                {{$item->qty}}
                             </a>
                         </td>
                         <td> 
                             <a style="word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
-                                {{$item->current_price}}
+                                {{$item->oldPrice}}
+                            </a>
+                        </td>
+                        <td> 
+                            <a style="word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
+                                {{$item->salePrice}}
                             </a>
                         </td>
                         <td style="max-width:110px;"> 
