@@ -2,17 +2,17 @@
     <section class="section_brand section">
         <div class="container px-md-0">
             <div class="row text-center flex-nowrap js-slider">
-                @foreach($category as $category)
+                @foreach($categorys as $categorys)
                 <div class="item mt-2">
-                    <a href="collections/all.html" title="{{ $category->name }}">
+                    <a href="collections/all.html" title="{{ $categorys->name }}">
                         <img class="lazyload img-fluid"
-                            src="{{$category->image}}"
+                            src="{{$categorys->image}}"
                             {{-- data-src="{{$category->image}}" --}}
-                            alt="{{ $category->id }}" />
+                            alt="{{ $categorys->id }}" />
                     </a>
                     <h3>
-                        <a href="collections/all.html" title="{{ $category->name }}">
-                            {{ $category->name }}
+                        <a href="" title="{{ $categorys->name }}">
+                            {{ $categorys->name }}
                         </a>
                     </h3>
                 </div>

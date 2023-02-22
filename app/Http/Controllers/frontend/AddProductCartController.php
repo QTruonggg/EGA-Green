@@ -11,25 +11,32 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class AddProductCartController extends Controller
 {
-    public function addCartajax($id,Request $request) {
+    public function addCartajax(Request $request) {
+
+        $id = $request->input('id');
+        $qty = $request->input('qty');
+
         $product = Products::FindOrFail($id);
+
+        // dd($product);
         Cart::add([
             'id' => $product->id,
-            'name'=>$request['name'],
-            'price'=>(int)($request['salePrice']),
-            'qty'=> (int)$request['quantity'],
+            'name'=>$product->name,
+            'price'=>$product->salePrice,
+            'qty'=> $qty,
             'weight' => $product-> status,
-            'options' => ['images'=>$request['images'],
-                        'code'=>$request['code'],
-                        'discount'=>$request['percent_discount'],
-                        'oldPrice'=>(int)($request['oldPrice']),
+            'options' => ['images'=>$product['images'],
+                        'code'=>$product['code'],
+                        'discount'=>$product['percent_discount'],
+                        'price'=>$product['salePrice'],
             ]
         ]);
-        return response()->json(['success'=> 'Thêm vào giỏ hàng thành công','quantity'=>Cart::count()]);
+        return back()->with(['success'=> 'Thêm vào giỏ hàng thành công','qty'=>Cart::count()]);
     }
     public function showCartList() {
         // SEOMeta::setTitle("Giỏ hàng");
-        return view('frontend.shopping_cart.index');
+        $productCart = Cart::content();
+        return view('frontend.shopping_cart.index',compact('productCart'));
     } 
     public function deleteCart($rowId) {
         Cart::remove($rowId);

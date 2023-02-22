@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\Subcategory_productsController;
+use App\Http\Controllers\frontend\AddProductCartController;
 use App\Http\Controllers\frontend\HomeInterfaceController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +20,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('frontend.home.index');
-});
-
-
-
 
 
 
@@ -92,7 +86,21 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 });
 
+
+
+//frontend
+Route::get('/', function () {
+    return view('frontend.home.index');
+});
+
 Route::get('/sanpham',[HomeInterfaceController::class, 'showAllProduct'])->name('ProductList'); 
 
 
 Route::get('/sanpham/{id}-{slug}',[HomeInterfaceController::class, 'showDetailsProduct'])->name('showDetailsProduct'); 
+
+
+Route::get('/them-{id}', [AddProductCartController::class, 'addCartajax'])->name('addProduct');
+
+Route::get('/gio-hang',[AddProductCartController::class , 'showCartList'])->name('showCartList');
+Route::get('/xoa-gio-hang-{rowId}',[AddProductCartController::class , 'deleteCart'])->name('deleteCart');
+

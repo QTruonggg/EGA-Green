@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'category_products'=>CategoryProducts::orderBy('created_at','ASC')->where('parent_id', '=', '0')->with('childs')->get(),
                 'subcategory'=>SubCategoryProducts::all(),
-                'category'=>Category::all(),
+                'categorys'=>Category::orderBy('created_at', 'ASC')->take(8)->get(),
                 'banner'=>Banner::all(),
                 // 'product_cart'=>Cart::content(),
                 'user'=>User::first(),

@@ -3,6 +3,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 @include('frontend.components.head')
+@yield('head')
 
 <body>
     @include('frontend.components.header')

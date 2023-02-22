@@ -1,16 +1,25 @@
-@extends('cmponents.index')
+@extends('frontend.components.index')
+@section('head')
+<link href='//theme.hstatic.net/200000295082/1000772075/14/cartpage.scss.css?v=586' rel='stylesheet' type='text/css'  media='all'  />	
+@endsection
+
 @section('content')
-    <main id="main" class="">
+@include('frontend.home.sidebar')
+@include('frontend.components.breadcrumb', ['name'=>'Giỏ hàng'])
+
+    {{-- <main id="main" class="">
         <div class="page-wrapper page-left-sidebar">
             <div class="row">
                 <div id="content" class="large-9 right col" role="main">
                     <div class="page-inner">
                         <div class="woocommerce">
-                            <div class="woocommerce row row-large row-divided">
+                            <div class="woocommerce row row-large row-divided"> --}}
+
                                 {{-- no cart --}}
-                                @if (Cart::count() == 0)
+
+                                {{-- @if (Cart::count() == 0)
                                     <div id="content" class="large-7 right col" role="main">
-                                        <div class="page-inner">
+                                        <div class="page-inner"> --}}
                                             {{-- <div class="woocommerce">
                                             <div class="text-center pt pb">
                                                 <p class="cart-empty">Giỏ hàng của bạn đang trống</p>		
@@ -21,7 +30,7 @@
                                                 </p>
                                             </div>
                                         </div> --}}
-                                            <div class="title-cart">
+                                            {{-- <div class="title-cart">
                                                 <h1>Giỏ hàng</h1>
                                                 <p>
                                                     (Chưa có sản phẩm nào) nhấn vào
@@ -32,11 +41,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                @else
+                                @else --}}
                                     {{-- cart product --}}
-                                    @include('frontend.shopping_cart.cart_content')
-                                @endif
-                                <div class="cart-collaterals large-5 col pb-0">
+                                    {{-- @include('frontend.shopping_cart.cart_content') --}}
+                                {{-- @endif --}}
+                                {{-- <div class="cart-collaterals large-5 col pb-0">
                                     <div class="cart-sidebar col-inner ">
                                         <div class="cart_totals ">
                                             <table cellspacing="0">
@@ -73,12 +82,12 @@
                                                 </tbody>
                                             </table>
                                             <div class="wc-proceed-to-checkout">
-                                                <a href="{{ route('payment') }}"
+                                                <a href=""
                                                     class="checkout-button button alt wc-forward">
                                                     Tiến hành đặt hàng
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         {{-- <form class="checkout_coupon mb-0" method="post">
                                         <div class="coupon">
                                             <h3 class="widget-title"><i class="icon-tag"></i> Mã ưu đãi</h3>
@@ -86,7 +95,7 @@
                                             <input type="submit" class="is-form expand" name="apply_coupon" value="Áp dụng mã ưu đãi">
                                         </div>
                                     </form> --}}
-                                        <div class="cart-sidebar-content relative"></div>
+                                        {{-- <div class="cart-sidebar-content relative"></div>
                                     </div>
                                 </div>
                             </div>
@@ -95,16 +104,23 @@
                     </div><!-- .page-inner -->
                 </div><!-- end #content large-9 left -->
                 <div class="large-3 col col-first col-divided">
-                    <div id="secondary" class="widget-area " role="complementary">
+                    <div id="secondary" class="widget-area " role="complementary"> --}}
 
                         {{-- @include('frontend.blog.hot_product')
                     @include('frontend.blog.blog_new') --}}
 
 
-                    </div><!-- #secondary -->
+                    {{-- </div><!-- #secondary -->
                 </div><!-- end sidebar -->
             </div><!-- end row -->
         </div><!-- end page-right-sidebar container -->
-    </main>
+    </main> --}}
     <!-- #main -->
+
+
+    @include('frontend.shopping_cart.cart_content')
+
 @endsection
+
+
+
