@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\Category_productsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LoginController;
@@ -82,6 +83,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('search', [ProductsController::class,'search'])->name('admin.product.search');
     });
 
+    Route::prefix('blog')->group(function() {
+        Route::get('list',[BlogController::class,'BlogList'])->name('blog.list');
+        Route::get('create',[BlogController::class,'createBlog'])->name('blog.create');
+        Route::post('create',[BlogController::class,'storeBlog']);
+        Route::get('update/{id}',[BlogController::class,'getUpdateBlog'])->name('blog.getUpdate');
+        Route::post('update/{id}',[BlogController::class,'updateBlog'])->name('blog.update');
+        Route::get('deleteblog/{id}', [BlogController::class, 'deleteBlog'])->name('blog.delete');
+    });
+
 
 
 });
@@ -103,4 +113,9 @@ Route::get('/them-{id}', [AddProductCartController::class, 'addCartajax'])->name
 
 Route::get('/gio-hang',[AddProductCartController::class , 'showCartList'])->name('showCartList');
 Route::get('/xoa-gio-hang-{rowId}',[AddProductCartController::class , 'deleteCart'])->name('deleteCart');
+
+
+
+Route::get('/tin-tuc',[HomeInterfaceController::class, 'blog'])->name('blog');
+Route::get('/tin-tuc/{id}-{slug}',[HomeInterfaceController::class, 'blog_details'])->name('blog_details');
 

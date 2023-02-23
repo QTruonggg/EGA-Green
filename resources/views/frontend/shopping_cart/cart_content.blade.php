@@ -64,7 +64,7 @@
                 <div class="col-9">
                     <div class="form">
                         <div class="table-responsive">
-                                    @if (Cart::count() != 0)
+                                    @if ($countCart != 0)
                                         @foreach ($productCart as $productCart)
                                             {{-- <tr>
                                                 <td class="tt">

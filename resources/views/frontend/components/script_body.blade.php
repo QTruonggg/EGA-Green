@@ -1197,9 +1197,8 @@
         </div>
         <div class="wrap_popup">
             <div class="title-quantity-popup">
-                <span class="cart_status" onclick="window.location.href='cart.html';">
-                    Giỏ hàng của bạn có <span class="cart-popup-count"></span> sản
-                    phẩm
+                <span class="cart_status" onclick="window.location.href='/gio-hang';">
+                    Giỏ hàng của bạn có {{$countCart}} sản phẩm
                 </span>
             </div>
             <div class="content-popup-cart">

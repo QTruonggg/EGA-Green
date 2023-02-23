@@ -161,10 +161,10 @@
                         </li>
                         <li class="cartgroup ml-0 mr-2 mr-md-0">
                             <div class="mini-cart text-xs-center">
-                                <a class="img_hover_cart" href="cart.html" title="Giỏ hàng">
+                                <a class="img_hover_cart" href="/gio-hang" title="Giỏ hàng">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span class="mx-2 d-lg-block d-none text-nowrap">Giỏ hàng</span>
-                                    <span class="count_item count_item_pr">0</span>
+                                    <span class="count_item count_item_pr">{{$countCart}}</span>
                                 </a>
                                 <div class="top-cart-content card">
                                     <ul id="cart-sidebar" class="mini-products-list count_li list-unstyled">
